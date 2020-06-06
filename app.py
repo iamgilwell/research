@@ -2,10 +2,10 @@ from __future__ import absolute_import, unicode_literals
 from flask import Flask 
 from celery import Celery
 
-app = Celery('jobs',
+app = Celery('jobs,data',
              broker='redis://localhost:6379/0',
              backend='redis://localhost:6379/0',
-             include=['jobs.tasks'])
+             include=['jobs.tasks','data.tasks'])
 
 # Optional configuration, see the application user guide.
 app.conf.update(
